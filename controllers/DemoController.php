@@ -14,11 +14,14 @@ use yii\web\Controller;
 class DemoController extends Controller
 {
 
-    public function actionXml() {
-        $model_xml = new DemoXml();
-        header("Content-type: text/xml");
-        //\Yii::$app->response->format = \yii\web\Response::FORMAT_XML;
+     public function actionXml(){
 
-      return $model_xml->generateXml();
-    }
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_XML;
+        $items = ['some', 'array', 'of', 'data' => ['associative', 'array']];
+        return $items;
+
+        Yii::$app->guestbook->format = \yii\web\Response::FORMAT_XML;
+        $items = ['some', 'array', 'of', 'data' => ['associative', 'array']];
+        return $items;
+}
 }
